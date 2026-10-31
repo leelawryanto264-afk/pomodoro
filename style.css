@@ -1,9 +1,17 @@
+/*Pomodoro section*/
 #pomodoro {
   display: flex;
-  flex-direction: row;
-  justify-content: right;
+  flex: 0 0 auto;
+  width: 500px;
+  height: 94vh;
+  flex-direction: column;
   align-items: center;
-  gap: 40px;
+  text-align: center;
+  padding: 24px;
+  border-radius: 16px;
+  float: right;
+  gap: 20px;
+  background: #ffffff;
 }
 
 #drop-cnt {
@@ -22,7 +30,16 @@ body {
   background-color: #3467;
 }
 
+select {
+  font-family: Calibri, sans-serif;
+  font-size: medium;
+}
+option {
+  padding: 15px;
+}
+
 .bg-circle,
 .time-circle {
   fill: rgba(84, 135, 202, 0.466);
 }
+/*To-Do List*/

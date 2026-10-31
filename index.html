@@ -11,13 +11,14 @@
       <div class="set">1/4</div>
       <div class="circle-rap">
         <svg height="300" width="300" class="circle-cnt">
-          <circle class="bg-circle" r="90" cx="100" cy="100"></circle>
-          <circle class="time-circle" r="90" cx="100" cy="100"></circle>
+          <circle class="bg-circle" r="150" cx="150" cy="150"></circle>
+          <circle class="time-circle" r="150" cx="150" cy="150"></circle>
         </svg>
         <div class="time">00:00</div>
       </div>
-      <span class="icon-config" id="toggle-config">*gear icon*</span>
-      <span class="config-text">Configuration</span>
+      <span class="icon-config" id="toggle-config"
+        >*gear icon* Configuration</span
+      >
       <div id="drop-cnt" style="display: none">
         <div class="select">
           <label for="work-opt">Times:</label>
@@ -34,12 +35,19 @@
             <option value="4" selected>4</option>
             <option value="5">5</option>
           </select>
+          <label for="break-duration">Break(mins):</label>
+          <select id="break-duration">
+            <option value="5" selected>5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+          </select>
         </div>
       </div>
       <div class="mode-text">Mode</div>
       <button class="reset">Reset</button>
       <button class="control">Start</button>
     </div>
-    <script src="script.js"></script>
+    <script src="pomodoro.js"></script>
+    <script src="to_do.js"></script>
   </body>
 </html>
