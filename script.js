@@ -10,10 +10,9 @@ control.addEventListener("click", togglePause);
 resetBtn.addEventListener("click", reset);
 
 let running = false;
-let finish = false;
-let onBreak = false;
-let breakTime = 0;
 let workTime = 0;
+let onBreak = false;
+let normBreak = 0;
 let longBreak = 0;
 let totalSets = 0;
 let currentSet = 1;
@@ -25,9 +24,9 @@ function timeSettings() {
   const workVal = parseInt(workOpt.value);
   const setVal = parseInt(setOpt.value);
   running = false;
-  finish = false;
-  breakTime = (workVal / 5) * 60;
   workTime = workVal * 60;
+  onBreak = false;
+  normBreak = (workVal / 5) * 60;
   longBreak = (workVal - 15) * 60;
   totalSets = setVal;
   currentSet = 1;
@@ -36,10 +35,31 @@ function timeSettings() {
   timer = null;
 }
 
+function pause() {
+  running = false;
+  control.innerText = "start";
+  clearInterval(timer);
+}
+
 function reset() {
   pause();
   timeSettings();
   updateDisplay();
+}
+
+function nextSet() {
+  onBreak = !onBreak;
+  if (!onBreak) currentSet++;
+  if (currentSet <= totalSets) {
+    if (onBreak) {
+      totalTime = currentSet < totalSets ? normBreak : longBreak;
+    } else {
+      totalTime = workTime;
+    }
+    timeRemain = totalTime;
+  } else {
+    reset();
+  }
 }
 
 function togglePause() {
@@ -51,11 +71,10 @@ function togglePause() {
 }
 
 function updateDisplay() {
-  /*Woah this format is fast*/
   const modeTxt = onBreak
     ? currentSet < totalSets
-      ? "tired"
-      : "not tired"
+      ? "REAST"
+      : "REST (BUT lONGER)"
     : "GET BACK TO THE GRIND";
   const mins = Math.floor(timeRemain / 60)
     .toString()
@@ -67,10 +86,17 @@ function updateDisplay() {
   set.innerText = `${currentSet}/${totalSets}`;
 }
 
+function finishSet() {
+  nextSet();
+  updateDisplay();
+}
+
 function updateTimer() {
   if (timeRemain > 0) {
     timeRemain--;
     updateDisplay();
+  } else {
+    finishSet();
   }
 }
 
@@ -87,13 +113,7 @@ function start() {
   running = true;
   control.innerText = "pause";
   updateDisplay();
-  timer = setInterval(updateTimer, 1000);
-}
-
-function pause() {
-  running = false;
-  control.innerText = "start";
-  clearInterval(timer);
+  timer = setInterval(updateTimer, 10);
 }
 
 timeSettings();

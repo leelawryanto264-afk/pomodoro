@@ -7,19 +7,25 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="pomodoro">
+    <div id="pomodoro">
       <div class="set">1/4</div>
-      <div class="time">00:00</div>
+      <div class="circle-rap">
+        <svg height="300" width="300" class="circle-cnt">
+          <circle class="bg-circle" r="90" cx="100" cy="100"></circle>
+          <circle class="time-circle" r="90" cx="100" cy="100"></circle>
+        </svg>
+        <div class="time">00:00</div>
+      </div>
       <span class="icon-config" id="toggle-config">*gear icon*</span>
       <span class="config-text">Configuration</span>
       <div id="drop-cnt" style="display: none">
         <div class="select">
           <label for="work-opt">Times:</label>
           <select id="work-opt" name="work-option" onchange="reset()">
-            <option val="20" selected>20 minutes</option>
-            <option val="30">30 minutes</option>
-            <option val="40">40 minutes</option>
-            <option val="50">50 minutes</option>
+            <option value="20" selected>20 minutes</option>
+            <option value="30">30 minutes</option>
+            <option value="40">40 minutes</option>
+            <option value="50">50 minutes</option>
           </select>
           <label for="set-opt" name="set-option">Sets:</label>
           <select id="set-opt">
@@ -29,8 +35,8 @@
             <option value="5">5</option>
           </select>
         </div>
-        <div class="mode-text">Mode</div>
       </div>
+      <div class="mode-text">Mode</div>
       <button class="reset">Reset</button>
       <button class="control">Start</button>
     </div>

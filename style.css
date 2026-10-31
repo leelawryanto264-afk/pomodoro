@@ -1,0 +1,28 @@
+#pomodoro {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  align-items: center;
+  gap: 40px;
+}
+
+#drop-cnt {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+}
+
+#toggle-config {
+  cursor: pointer;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  background-color: #3467;
+}
+
+.bg-circle,
+.time-circle {
+  fill: rgba(84, 135, 202, 0.466);
+}
